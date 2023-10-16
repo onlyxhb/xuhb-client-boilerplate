@@ -1,6 +1,6 @@
 appId: com.boilerplate.app
 copyright: onlyxhb
-productName: 国金开票助手
+productName: 客户端模板
 directories:
   buildResources: client/build
   output: dist
@@ -14,14 +14,14 @@ asarUnpack:
   - '**/*.{node,dll}'
 afterSign: client/build/notarize.js
 win:
-  executableName: 国金开票助手
+  executableName: 客户端模板
 nsis:
   oneClick: false
   language: 2052
   perMachine: true
   allowElevation: true
   allowToChangeInstallationDirectory: true
-  artifactName: 国金开票助手-${version}-setup.${ext}
+  artifactName: 客户端模板-${version}-setup.${ext}
   shortcutName: ${productName}
   uninstallDisplayName: ${productName}
   createDesktopShortcut: true
@@ -34,7 +34,7 @@ mac:
     - NSDocumentsFolderUsageDescription: Application requests access to the user's Documents folder.
     - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
 dmg:
-  artifactName: 国金开票助手-${version}.${ext}
+  artifactName: 客户端模板-${version}.${ext}
 linux:
   target:
     - AppImage
@@ -43,7 +43,7 @@ linux:
   maintainer: electronjs.org
   category: Utility
 appImage:
-  artifactName: 国金开票助手-${version}.${ext}
+  artifactName: 客户端模板-${version}.${ext}
 npmRebuild: false
 publish:
   provider: generic
