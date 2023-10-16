@@ -51,7 +51,7 @@ function createWindow(): void {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   // Set app user model id for windows
-  electronApp.setAppUserModelId('com.invoice.app')
+  electronApp.setAppUserModelId('com.boilerplate.app')
   // Hide Menu
   // Menu.setApplicationMenu(null)
   // if (process.platform !== 'darwin' && app.dock) {

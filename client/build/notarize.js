@@ -1,12 +1,12 @@
 const { notarize } = require('electron-notarize')
 
-module.exports = async (context) => {
+module.exports = async context => {
   if (process.platform !== 'darwin') return
 
   console.log('aftersign hook triggered, start to notarize app.')
 
   if (!process.env.CI) {
-    console.log(`skipping notarizing, not in CI.`)
+    console.log('skipping notarizing, not in CI.')
     return
   }
 
@@ -15,7 +15,7 @@ module.exports = async (context) => {
     return
   }
 
-  const appId = 'com.invoice.app'
+  const appId = 'com.boilerplate.app'
 
   const { appOutDir } = context
 
