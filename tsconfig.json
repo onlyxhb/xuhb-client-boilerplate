@@ -1,0 +1,26 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": [
+    "src/**/*",
+    "src/**/*.vue",
+    "mock/*",
+    "vite.config.*",
+    "vitest.config.*",
+    "cypress.config.*",
+    "src/types/*.ts",
+    "client/**/*",
+    "server/**/*"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": true,
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>国金开票助手</title>
+    <style>
+      .global-file-select-hidden {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="file" class="global-file-select-hidden" />
+    <div id="app"></div>
+    <script src="/ddLogin.js"></script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

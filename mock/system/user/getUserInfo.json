@@ -1,0 +1,24 @@
+{
+  "data": {
+    "id": "3ef5d019-79c8-4868-848a-b1482f636145",
+    "isDelete": false,
+    "createTime": "2022-08-05T21:02:51.805Z",
+    "updateTime": "2022-08-05T21:02:51.805Z",
+    "version": 1,
+    "phone": "13456789123",
+    "ip": "112.10.213.32",
+    "username": "测试一下",
+    "nickname": "随波逐流",
+    "avatar": "https://avatars.githubusercontent.com/u/19361551?v=4",
+    "email": "onlyxhb@qq.com",
+    "openid": null,
+    "role": "admin",
+    "state": "free",
+    "endTime": "2022-12-05T21:02:51.805Z",
+    "salt": "NyY5JrK3Bq2Cuw=="
+  },
+  "code": "10000000",
+  "success": true,
+  "timestamp": 1659864354310,
+  "desc": "ok"
+}

@@ -1,0 +1,66 @@
+name: 发布
+on:
+  push:
+    branches:
+      - master # 只要提交到 master 分支时，才会触发这个流水线
+
+# Workflow's jobs
+jobs:
+  publish:
+    name: 客户端打包
+
+    runs-on: ${{ matrix.os }} # 流水线会跑在哪些操作系统中
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest] # 流水线将分别触发在 windows、macos、ubuntu 三个系统中
+
+    steps:
+      # step1: check out repository
+      - uses: actions/checkout@v2 # 检测你的 repository
+
+      # step2: install node
+      - uses: actions/setup-node@v2 # 安装 node 的依赖，根据项目需求修改版本
+        with:
+          node-version: '16.13.1'
+          registry-url: https://registry.npmmirror.com/
+      - run: npm install -g yarn
+
+      # step2: cache node_modules
+      - name: 缓存依赖
+        id: cache-desktop-modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock', 'patches/**') }}
+
+      # step3: install node_modules
+      - name: 安装依赖
+        if: steps.cache-desktop-modules.outputs.cache-hit != 'true'
+        run: yarn install
+
+      # step4: build renderer in dist_electron
+      - name: 打包前端资源
+        run: yarn client:build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # step5: build all platform
+      - name: 打包windows
+        if: matrix.os == 'windows-latest'
+        run: yarn build:win
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 打包Mac
+        if: matrix.os == 'macos-latest'
+        run: yarn build:mac
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 打包Linux
+        if: matrix.os == 'ubuntu-latest'
+        run: yarn build:linux
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

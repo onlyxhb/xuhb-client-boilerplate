@@ -1,0 +1,10 @@
+/build/
+/dist/
+/node_modules
+.history
+public
+dist
+*.md
+*.html
+tesseract
+fonts

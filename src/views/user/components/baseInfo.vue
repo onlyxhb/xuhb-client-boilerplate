@@ -1,0 +1,95 @@
+<script lang="ts" setup>
+const formRef = ref()
+const formData = ref({
+  email: '',
+  nickname: '',
+  countryRegion: '',
+  area: '',
+  address: '',
+  profile: ''
+})
+const validate = async () => {
+  const res = await formRef.value?.validate()
+  console.log(res)
+}
+const reset = async () => {
+  await formRef.value?.resetFields()
+}
+</script>
+
+<template>
+  <a-form
+    ref="formRef"
+    :model="formData"
+    class="base-info-form"
+    :label-col-props="{ span: 5 }"
+    :wrapper-col-props="{ span: 19 }"
+  >
+    <a-form-item field="email" label="邮箱" :rules="[{ required: true, message: '请输入邮箱' }]">
+      <a-input v-model="formData.email" placeholder="请输入邮箱地址" />
+    </a-form-item>
+    <a-form-item field="nickname" label="昵称" :rules="[{ required: true, message: '请输入昵称' }]">
+      <a-input v-model="formData.nickname" placeholder="请输入昵称" />
+    </a-form-item>
+    <a-form-item field="countryRegion" label="国家/地区" :rules="[{ required: true, message: '请选择国家/地区' }]">
+      <a-select v-model="formData.countryRegion" placeholder="请选择">
+        <a-option value="China">中国</a-option>
+      </a-select>
+    </a-form-item>
+    <a-form-item field="area" label="所在区域" :rules="[{ required: true, message: '请选择所在区域' }]">
+      <a-cascader
+        v-model="formData.area"
+        placeholder="请选择"
+        :options="[
+          {
+            label: '北京',
+            value: 'beijing',
+            children: [
+              {
+                label: '北京',
+                value: 'beijing',
+                children: [
+                  {
+                    label: '朝阳',
+                    value: 'chaoyang'
+                  }
+                ]
+              }
+            ]
+          }
+        ]"
+        allow-clear
+      />
+    </a-form-item>
+    <a-form-item field="address" label="具体地址">
+      <a-input v-model="formData.address" placeholder="请输入你的地址" />
+    </a-form-item>
+    <a-form-item
+      field="profile"
+      label="个人简介"
+      :rules="[
+        {
+          maxLength: 200,
+          message: '最多不超过200字'
+        }
+      ]"
+      row-class="keep-margin"
+    >
+      <a-textarea v-model="formData.profile" placeholder="请输入您的个人简介，最多不超过200字。" />
+    </a-form-item>
+    <a-form-item>
+      <a-space>
+        <a-button type="primary" @click="validate">保存</a-button>
+        <a-button type="dashed" @click="reset">重置</a-button>
+      </a-space>
+    </a-form-item>
+  </a-form>
+</template>
+
+<style scoped lang="less">
+.base-info-form {
+  max-width: 800px;
+  // margin: 0 auto;
+  padding-top: 80px;
+}
+</style>

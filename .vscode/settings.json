@@ -1,0 +1,68 @@
+{
+  "cSpell.words": [
+    "xuhb",
+    "yapi",
+    "builddist",
+    "pxtorem",
+    "vite",
+    "vant",
+    "amfe",
+    "pinia",
+    "unplugin",
+    "gameover",
+    "weixin",
+    "classname",
+    "stylelint",
+    "rushstack",
+    "commitlint",
+    "qrcode",
+    "popconfirm",
+    "bytecode",
+    "nprogress"
+  ],
+  //全局使用保存自动格式化功能
+  "editor.formatOnSave": true,
+  // 使用eslint格式化
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "files.autoSave": "afterDelay",
+  // 让函数名后与括号加空格
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "npm.packageManager": "yarn",
+  "editor.tabSize": 2,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.detectIndentation": false,
+  "files.eol": "\n",
+  // "files.autoSave": "afterDelay",
+  // "[vue]": {
+  //   "editor.defaultFormatter": "octref.vetur"
+  // },
+  "[javascript]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.trace.server": "verbose",
+  "eslint.format.enable": true,
+  "eslint.packageManager": "yarn",
+  "eslint.run": "onSave",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown"
+  ],
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "eslint.workingDirectories": [
+    ".eslintrc.js",
+    {
+      "mode": "auto"
+    }
+  ]
+}

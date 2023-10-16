@@ -1,0 +1,50 @@
+appId: com.invoice.app
+copyright: onlyxhb
+productName: 国金开票助手
+directories:
+  buildResources: client/build
+  output: dist
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!electron.vite.config.{js,ts,mjs,cjs}'
+  - '!{.eslintignore,.eslintrc.cjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}'
+  - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
+asarUnpack:
+  - '**/*.{node,dll}'
+afterSign: client/build/notarize.js
+win:
+  executableName: 国金开票助手
+nsis:
+  oneClick: false
+  language: 2052
+  perMachine: true
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+  artifactName: 国金开票助手-${version}-setup.${ext}
+  shortcutName: ${productName}
+  uninstallDisplayName: ${productName}
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+mac:
+  entitlementsInherit: client/build/mac.plist
+  extendInfo:
+    - NSCameraUsageDescription: Application requests access to the device's camera.
+    - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
+    - NSDocumentsFolderUsageDescription: Application requests access to the user's Documents folder.
+    - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
+dmg:
+  artifactName: 国金开票助手-${version}.${ext}
+linux:
+  target:
+    - AppImage
+    - snap
+    - deb
+  maintainer: electronjs.org
+  category: Utility
+appImage:
+  artifactName: 国金开票助手-${version}.${ext}
+npmRebuild: false
+publish:
+  provider: generic
+  url: https://example.com/auto-updates
