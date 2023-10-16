@@ -6,5 +6,4 @@ public
 dist
 *.md
 *.html
-tesseract
 fonts

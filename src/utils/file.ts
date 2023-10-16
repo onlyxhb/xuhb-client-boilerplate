@@ -1,32 +1,6 @@
 import * as XLSX from 'xlsx'
-import { createWorker } from 'tesseract.js'
 
-export const recognizeFile = (fileItem: any) => {
-  // eslint-disable-next-line
-  return new Promise(async (resolve, reject) => {
-    try {
-      if (!/\.(jpg|png|jpeg)$/.test(fileItem.name.toLowerCase())) {
-        reject(new Error('上传格式不正确，请上传jpg/png/jepg格式的图片'))
-        return false
-      }
-      const worker = createWorker({
-        workerPath: new URL('../assets/tesseract/worker.min.js', import.meta.url).href,
-        langPath: new URL('../assets/tesseract/', import.meta.url).href,
-        corePath: new URL('../assets/tesseract/tesseract-core.wasm.js', import.meta.url).href,
-        logger: (m: any) => console.log(m)
-      })
-      await worker.load()
-      await worker.loadLanguage('chi_sim')
-      await worker.initialize('chi_sim', 1)
-      // eslint-disable-next-line
-      await worker.setParameters({ tessedit_pageseg_mode: '6' as any })
-      const { data } = await worker.recognize(fileItem)
-      resolve(data.text)
-    } catch (error) {
-      reject(new Error('识别失败，请上传图片后重试...'))
-    }
-  })
-}
+export const recognizeFile = () => {}
 
 /** 将上传的excel表格转换为数组 */
 export const getCsvToList = (file: any, maps: any) => {

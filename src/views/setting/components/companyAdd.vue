@@ -19,11 +19,10 @@ const emits = defineEmits(['update:visible', 'confirm'])
 
 const handleRecognize = () => {
   const target: any = document.querySelector('.global-file-select-hidden') || {}
-  target.onchange = async (e: any) => {
+  target.onchange = async () => {
     try {
       dialogRef.value.resetData({}, true)
-      const files = e.target.files || []
-      const str: any = await recognizeFile(files[0])
+      const str: any = await recognizeFile()
       const res = await getCompanyInfo(str)
       dialogRef.value.resetData(res, false)
     } catch (error: any) {
