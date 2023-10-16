@@ -5,7 +5,6 @@ import piniaPersist from 'pinia-plugin-persist'
 import ArcoIcon from '@arco-design/web-vue/es/icon'
 import App from '@/App.vue'
 import router from '@/router'
-import '@/driver'
 import '@/assets/styles/index.less'
 
 // vant3 以函数的形式提供的组件，不能自动导入样式
